@@ -58,7 +58,8 @@ echo '</p></div>';
             $this->widget('ext.Hzl.google.HzlVisualizationChart', array('visualization' => 'BarChart',
                 'data' => $relatedModel->getChartData(),
                 'options' => array('title' => 'Consumo',
-                    'legend' => array('position' => 'bottom')
+                    'legend' => array('position' => 'bottom'),
+                    'hAxis' => array('minValue' => '0'),
                 ),
                 'htmlOptions' => array('class' => 'showPrint')
             ));

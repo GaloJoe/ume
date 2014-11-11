@@ -64,7 +64,8 @@ echo '</div>';
 $this->widget('ext.Hzl.google.HzlVisualizationChart', array('visualization' => 'BarChart',
     'data' => $chartData,
     'options' => array('title' => 'Consumo',
-        'legend' => array('position' => 'bottom', 'textStyle' => array('fontSize' => '40'))
+        'legend' => array('position' => 'bottom'),
+        'hAxis' => array('minValue' => '0'),
     ),
     'htmlOptions' => array('class' => 'showPrint')
 ));
