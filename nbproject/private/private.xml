@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>protected/views/usuario/empreiteiros.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>11</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="MetragemDall">
+            <file>file:/C:/xampp/htdocs/metragem/protected/views/usuario/searchContracts.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/models/Usuario.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/controllers/UsuarioController.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/views/layouts/main.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/views/usuario/_form.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/models/Apartamento.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/config/main.php</file>
+        </group>
+        <group>
+            <file>file:/C:/xampp/htdocs/metragem/protected/views/historicoAtividade/create.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/views/site/index.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/views/layouts/main.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/views/layouts/column2.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/config/main.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/views/atividade/create.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/views/layouts/column1.php</file>
+        </group>
+        <group name="UME"/>
+        <group name="Dall">
+            <file>file:/C:/xampp/htdocs/metragem/protected/views/material/view.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/views/atividade/admin.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/models/Material.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/controllers/MaterialController.php</file>
+            <file>file:/C:/xampp/htdocs/metragem/protected/config/main.php</file>
+        </group>
+    </open-files>
+</project-private>
