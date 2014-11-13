@@ -511,17 +511,17 @@ class ApartamentoController extends GxController {
         ));
     }
 
-    public function actionRel($idEmpreendimento) {
+    public function actionRel() {
         $model = new Apartamento('search');
         $model->unsetAttributes();
         if (isset($_GET['Apartamento']))
             $model->setAttributes($_GET['Apartamento']);
 
-        $model->empreendimento = $idEmpreendimento;
+        $model->empreendimento = Yii::app()->session['empreendimento'];
 
         $this->render('rel', array(
             'model' => $model,
-            'idEmpreendimento' => $idEmpreendimento,
+            'idEmpreendimento' => Yii::app()->session['empreendimento'],
         ));
     }
 
@@ -686,7 +686,8 @@ class ApartamentoController extends GxController {
         return new Historico;
     }
 
-    public function actionListAvailable($idEmpreendimento) {
+    public function actionListAvailable() {
+        $idEmpreendimento = Yii::app()->session['empreendimento'];
         $result = Apartamento::model()->searchByStatus('Disponível', $idEmpreendimento);
 
         $this->render('relStatus', array(
@@ -695,7 +696,8 @@ class ApartamentoController extends GxController {
         ));
     }
 
-    public function actionListHiring($idEmpreendimento) {
+    public function actionListHiring() {
+        $idEmpreendimento = Yii::app()->session['empreendimento'];
         $result = Apartamento::model()->searchByStatus('Em Contratação', $idEmpreendimento);
 
         $this->render('relStatus', array(
@@ -704,7 +706,8 @@ class ApartamentoController extends GxController {
         ));
     }
 
-    public function actionListSold($idEmpreendimento) {
+    public function actionListSold() {
+        $idEmpreendimento = Yii::app()->session['empreendimento'];
         $result = Apartamento::model()->searchByStatus('Vendido', $idEmpreendimento, false);
         $resultAprovados = Apartamento::model()->searchByStatus('Vendido', $idEmpreendimento, true);
 
@@ -715,7 +718,8 @@ class ApartamentoController extends GxController {
         ));
     }
 
-    public function actionApproved($idEmpreendimento) {
+    public function actionApproved() {
+        $idEmpreendimento = Yii::app()->session['empreendimento'];
         $result = Apartamento::model()->searchByStatus('Vendido', $idEmpreendimento, true);
 
         $this->render('relStatus', array(
@@ -724,7 +728,8 @@ class ApartamentoController extends GxController {
         ));
     }
 
-    public function actionListReserved($idEmpreendimento) {
+    public function actionListReserved() {
+        $idEmpreendimento = Yii::app()->session['empreendimento'];
         $result = Apartamento::model()->searchByStatus('Reservado', $idEmpreendimento);
 
         $this->render('relStatus', array(
@@ -733,7 +738,8 @@ class ApartamentoController extends GxController {
         ));
     }
 
-    public function actionListExchanged($idEmpreendimento) {
+    public function actionListExchanged() {
+        $idEmpreendimento = Yii::app()->session['empreendimento'];
         $result = Apartamento::model()->searchByStatus('Permutado', $idEmpreendimento);
 
         $this->render('relStatus', array(

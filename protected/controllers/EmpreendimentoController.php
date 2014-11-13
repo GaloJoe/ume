@@ -7,6 +7,18 @@ class EmpreendimentoController extends GxController {
             'accessControl',
         );
     }
+    
+    public function actionSelect($id=null) {
+        if($id != null && $id != 0) {
+            Yii::app()->session['empreendimento'] = $id;
+            $this->redirect(Yii::app()->user->returnUrl);
+        } else {
+            $dataProvider = new CActiveDataProvider('Empreendimento');
+            $this->render('select', array(
+                'dataProvider' => $dataProvider,
+            ));
+        }
+    }
 
     public function accessRules() {
         return array(
@@ -21,7 +33,8 @@ class EmpreendimentoController extends GxController {
         );
     }
 
-    public function actionView($id) {
+    public function actionView() {
+        $id = Yii::app()->session['empreendimento'];
         $this->render('view', array(
             'model' => $this->loadModel($id, 'Empreendimento'),
         ));

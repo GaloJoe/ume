@@ -95,7 +95,8 @@ class HistoricoController extends GxController {
         ));
     }
     
-    public function actionAdmin($idEmpreendimento) {
+    public function actionAdmin() {
+        $idEmpreendimento = Yii::app()->session['empreendimento'];
         $model = new Historico('search');
         $model->unsetAttributes();
         

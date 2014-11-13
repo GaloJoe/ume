@@ -9,7 +9,8 @@ class AtividadeController extends GxController {
         ));
     }
 
-    public function actionCreate($emp) {
+    public function actionCreate() {
+        $emp = Yii::app()->session['empreendimento'];
         $model = new Atividade;
 
         if (isset($_POST['Atividade'])) {
@@ -77,7 +78,8 @@ class AtividadeController extends GxController {
         ));
     }
 
-    public function actionAdmin($emp) {
+    public function actionAdmin() {
+        $emp = Yii::app()->session['empreendimento'];
         $model = new Atividade('search');
         $model->unsetAttributes();
 

@@ -27,20 +27,21 @@
             </div><!-- header -->
 
             <?php if((!($this->uniqueid == 'recibo' && ($this->action->Id == 'view' || $this->action->Id == 'generateRecibo'))) &&
-                    (!($this->uniqueid == 'retencao' && $this->action->Id == 'generateRecibo'))) { ?>
+                    (!($this->uniqueid == 'retencao' && $this->action->Id == 'generateRecibo')) &&
+                    ($this->action->Id != 'select')) { ?>
                 <div id="mainmenu">
                     <?php
                     $this->widget('zii.widgets.CMenu', array(
                         'items' => array(
                             array('label' => Yii::t('app', 'Home'), 'url' => array('/site/index')),
                             array('label' => Yii::t('app', 'Imobiliarias'), 'url' => array('/imobiliaria/index'), 'visible' => Yii::app()->user->isMaster() || Yii::app()->user->isAdmin()),
-                            array('label' => Yii::t('app', 'Empreendimentos'), 'url' => array('/empreendimento/index'), 'visible' => !Yii::app()->user->isGuest && !Yii::app()->user->isAlmoxarife() && !Yii::app()->user->isEngenheiro() && !Yii::app()->user->isEmpreiteiro()),
+                            array('label' => Yii::t('app', 'Empreendimentos'), 'url' => array('/empreendimento/view'), 'visible' => !Yii::app()->user->isGuest && !Yii::app()->user->isAlmoxarife() && !Yii::app()->user->isEngenheiro() && !Yii::app()->user->isEmpreiteiro()),
                             array('label' => Yii::t('app', 'Usuários'), 'url' => array('/usuario/index'), 'visible' => Yii::app()->user->isMaster() || Yii::app()->user->isAdmin()),
-                            array('label' => Yii::t('app', 'Relatórios'), 'url' => array('/apartamento/indexEmpreendimento'), 'visible' => Yii::app()->user->isMaster() || Yii::app()->user->isAdmin()),
-                            array('label' => Yii::t('app', 'Histórico'), 'url' => array('/historico/indexEmpreendimento'), 'visible' => !Yii::app()->user->isGuest && !Yii::app()->user->isAlmoxarife() && !Yii::app()->user->isEngenheiro() && !Yii::app()->user->isEmpreiteiro()),
-                            array('label' => Yii::t('app', 'Material'), 'url' => array('/categoria/indexEmpreendimento'), 'visible' => Yii::app()->user->isMaster() || Yii::app()->user->isAlmoxarife() || Yii::app()->user->isEngenheiro()),
+                            array('label' => Yii::t('app', 'Relatórios'), 'url' => array('/apartamento/rel'), 'visible' => Yii::app()->user->isMaster() || Yii::app()->user->isAdmin()),
+                            array('label' => Yii::t('app', 'Histórico'), 'url' => array('/historico/admin'), 'visible' => !Yii::app()->user->isGuest && !Yii::app()->user->isAlmoxarife() && !Yii::app()->user->isEngenheiro() && !Yii::app()->user->isEmpreiteiro()),
+                            array('label' => Yii::t('app', 'Material'), 'url' => array('/categoria/admin'), 'visible' => Yii::app()->user->isMaster() || Yii::app()->user->isAlmoxarife() || Yii::app()->user->isEngenheiro()),
     //                        array('label' => Yii::t('app', 'Unidade Medida'), 'url' => array('/unidadeMedida/admin'), 'visible' => Yii::app()->user->isMaster() || Yii::app()->user->isAlmoxarife()),
-                            array('label' => Yii::t('app', 'Medição'), 'url' => array('/atividade/empreendimento'), 'visible' => Yii::app()->user->isMaster() || Yii::app()->user->isEmpreiteiro() ||  Yii::app()->user->isEngenheiro()),
+                            array('label' => Yii::t('app', 'Medição'), 'url' => array('/atividade/admin'), 'visible' => Yii::app()->user->isMaster() || Yii::app()->user->isEmpreiteiro() ||  Yii::app()->user->isEngenheiro()),
     //                        array('label' => Yii::t('app', 'Contratos'), 'url' => array('/usuario/searchContracts'), 'visible' => Yii::app()->user->isMaster()),
     //                        array('label' => Yii::t('app', 'Perfil'), 'url' => array('/usuario/view&id=' . Yii::app()->user->id), 'visible' => !Yii::app()->user->isGuest),
                             array('label' => Yii::t('app', 'Login'), 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
@@ -49,7 +50,17 @@
                     ));
                     ?>
                 </div><!-- mainmenu -->
-            <?php }?>
+            <?php } else {?>
+                <div id="mainmenu">
+                    <?php
+                    $this->widget('zii.widgets.CMenu', array(
+                        'items' => array(
+                            array('label' => Yii::t('app', 'Logout') . ' (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest),
+                        ),
+                    ));
+                    ?>
+                </div><!-- mainmenu -->
+            <?php } ?>
 
             <?php echo $content; ?>
 

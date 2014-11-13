@@ -5,10 +5,10 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-    array('label' => Yii::t('app', 'Create') . ' ' . $model->label(), 'url' => array('create&emp=' . $empreendimento)),
-    array('label' => Yii::t('app', 'Recibos'), 'url' => array('recibo/admin&emp=' . $empreendimento)),
-    array('label' => Yii::t('app', 'Valores retidos'), 'url' => array('retencao/admin&emp=' . $empreendimento)),
-    array('label' => Yii::t('app', 'Empreiteiros'), 'url' => array('usuario/empreiteiros&emp=' . $empreendimento)),
+    array('label' => Yii::t('app', 'Create') . ' ' . $model->label(), 'url' => array('create')),
+    array('label' => Yii::t('app', 'Recibos'), 'url' => array('recibo/admin')),
+    array('label' => Yii::t('app', 'Valores retidos'), 'url' => array('retencao/admin')),
+    array('label' => Yii::t('app', 'Empreiteiros'), 'url' => array('usuario/empreiteiros')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

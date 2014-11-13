@@ -6,7 +6,8 @@ class UsuarioController extends GxController {
         Usuario::model()->listWithContracts($emp);
     }
     
-    public function actionEmpreiteiros($emp=1) {
+    public function actionEmpreiteiros() {
+        $emp = Yii::app()->session['empreendimento'];
         $this->render('empreiteiros', array(
             'model' => Usuario::model(),
             'empreendimento' => $emp,

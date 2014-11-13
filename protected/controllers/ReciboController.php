@@ -115,7 +115,8 @@ class ReciboController extends GxController {
         ));
     }
 
-    public function actionAdmin($emp) {
+    public function actionAdmin() {
+        $emp = Yii::app()->session['empreendimento'];
         $model = new Recibo('search');
         $model->unsetAttributes();
 

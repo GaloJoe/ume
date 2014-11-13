@@ -85,7 +85,8 @@ class RetencaoController extends GxController {
         ));
     }
 
-    public function actionAdmin($emp, $usuario = null) {
+    public function actionAdmin($usuario = null) {
+        $emp = Yii::app()->session['empreendimento'];
         $model = new Recibo('search');
         $model->unsetAttributes();
 

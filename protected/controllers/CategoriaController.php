@@ -67,7 +67,9 @@ class CategoriaController extends GxController {
         ));
     }
 
-    public function actionAdmin($idEmpreendimento) {
+    public function actionAdmin() {
+        $idEmpreendimento = Yii::app()->session['empreendimento'];
+        
         $model = new Categoria('search');
         $model->unsetAttributes();
 
