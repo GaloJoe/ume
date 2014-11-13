@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2014 at 11:28 PM
+-- Generation Time: Nov 13, 2014 at 11:35 PM
 -- Server version: 5.5.36
 -- PHP Version: 5.4.27
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `dallnew`
 --
+CREATE DATABASE IF NOT EXISTS `dallnew` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `dallnew`;
 
 -- --------------------------------------------------------
 
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `andar`
 --
 
+DROP TABLE IF EXISTS `andar`;
 CREATE TABLE IF NOT EXISTS `andar` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(255) NOT NULL,
@@ -42,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `andar` (
 -- Table structure for table `apartamento`
 --
 
+DROP TABLE IF EXISTS `apartamento`;
 CREATE TABLE IF NOT EXISTS `apartamento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `numero` int(11) NOT NULL,
@@ -64,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `apartamento` (
 -- Table structure for table `atividade`
 --
 
+DROP TABLE IF EXISTS `atividade`;
 CREATE TABLE IF NOT EXISTS `atividade` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `unidade_medida` int(11) NOT NULL,
@@ -80,6 +85,7 @@ CREATE TABLE IF NOT EXISTS `atividade` (
 -- Table structure for table `bloco`
 --
 
+DROP TABLE IF EXISTS `bloco`;
 CREATE TABLE IF NOT EXISTS `bloco` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(100) NOT NULL,
@@ -98,6 +104,7 @@ CREATE TABLE IF NOT EXISTS `bloco` (
 -- Table structure for table `categoria`
 --
 
+DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE IF NOT EXISTS `categoria` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `empreendimento` int(11) DEFAULT NULL,
@@ -114,6 +121,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 -- Table structure for table `empreendimento`
 --
 
+DROP TABLE IF EXISTS `empreendimento`;
 CREATE TABLE IF NOT EXISTS `empreendimento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(60) NOT NULL,
@@ -134,6 +142,7 @@ CREATE TABLE IF NOT EXISTS `empreendimento` (
 -- Table structure for table `historico`
 --
 
+DROP TABLE IF EXISTS `historico`;
 CREATE TABLE IF NOT EXISTS `historico` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `apartamento` int(11) NOT NULL,
@@ -172,6 +181,7 @@ CREATE TABLE IF NOT EXISTS `historico` (
 -- Table structure for table `historico_atividade`
 --
 
+DROP TABLE IF EXISTS `historico_atividade`;
 CREATE TABLE IF NOT EXISTS `historico_atividade` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `atividade` int(11) NOT NULL,
@@ -197,6 +207,7 @@ CREATE TABLE IF NOT EXISTS `historico_atividade` (
 -- Table structure for table `imobiliaria`
 --
 
+DROP TABLE IF EXISTS `imobiliaria`;
 CREATE TABLE IF NOT EXISTS `imobiliaria` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
@@ -213,6 +224,7 @@ CREATE TABLE IF NOT EXISTS `imobiliaria` (
 -- Table structure for table `material`
 --
 
+DROP TABLE IF EXISTS `material`;
 CREATE TABLE IF NOT EXISTS `material` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(255) NOT NULL,
@@ -229,6 +241,7 @@ CREATE TABLE IF NOT EXISTS `material` (
 -- Table structure for table `modulo`
 --
 
+DROP TABLE IF EXISTS `modulo`;
 CREATE TABLE IF NOT EXISTS `modulo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(255) NOT NULL,
@@ -244,6 +257,7 @@ CREATE TABLE IF NOT EXISTS `modulo` (
 -- Table structure for table `movimentacao`
 --
 
+DROP TABLE IF EXISTS `movimentacao`;
 CREATE TABLE IF NOT EXISTS `movimentacao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `material` int(11) NOT NULL,
@@ -265,6 +279,7 @@ CREATE TABLE IF NOT EXISTS `movimentacao` (
 -- Table structure for table `recibo`
 --
 
+DROP TABLE IF EXISTS `recibo`;
 CREATE TABLE IF NOT EXISTS `recibo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `empreiteiro` int(11) NOT NULL,
@@ -286,6 +301,7 @@ CREATE TABLE IF NOT EXISTS `recibo` (
 -- Table structure for table `retencao`
 --
 
+DROP TABLE IF EXISTS `retencao`;
 CREATE TABLE IF NOT EXISTS `retencao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `valor` float NOT NULL,
@@ -304,6 +320,7 @@ CREATE TABLE IF NOT EXISTS `retencao` (
 -- Table structure for table `tipo_movimentacao`
 --
 
+DROP TABLE IF EXISTS `tipo_movimentacao`;
 CREATE TABLE IF NOT EXISTS `tipo_movimentacao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(255) NOT NULL,
@@ -317,6 +334,7 @@ CREATE TABLE IF NOT EXISTS `tipo_movimentacao` (
 -- Table structure for table `tipo_unidade_medida`
 --
 
+DROP TABLE IF EXISTS `tipo_unidade_medida`;
 CREATE TABLE IF NOT EXISTS `tipo_unidade_medida` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tabela` varchar(255) NOT NULL,
@@ -330,6 +348,7 @@ CREATE TABLE IF NOT EXISTS `tipo_unidade_medida` (
 -- Table structure for table `unidade_medida`
 --
 
+DROP TABLE IF EXISTS `unidade_medida`;
 CREATE TABLE IF NOT EXISTS `unidade_medida` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `empreendimento` int(11) NOT NULL,
@@ -347,6 +366,7 @@ CREATE TABLE IF NOT EXISTS `unidade_medida` (
 -- Table structure for table `usuario`
 --
 
+DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(60) NOT NULL,
