@@ -37,5 +37,8 @@
             <file>file:/C:/xampp/htdocs/metragem/protected/controllers/MaterialController.php</file>
             <file>file:/C:/xampp/htdocs/metragem/protected/config/main.php</file>
         </group>
+        <group name="Dall V3">
+            <file>file:/C:/xampp/htdocs/sistema/protected/config/main.php</file>
+        </group>
     </open-files>
 </project-private>
