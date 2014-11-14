@@ -5,10 +5,10 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-    array('label' => Yii::t('app', 'Create') . ' ' . $model->label(), 'url' => array('create')),
-    array('label' => Yii::t('app', 'Recibos'), 'url' => array('recibo/admin')),
-    array('label' => Yii::t('app', 'Valores retidos'), 'url' => array('retencao/admin')),
-    array('label' => Yii::t('app', 'Empreiteiros'), 'url' => array('usuario/empreiteiros')),
+    array('label' => Yii::t('app', 'Create') . ' ' . $model->label(), 'url' => array('create'), 'visible' => Yii::app()->user->isMaster() || Yii::app()->user->isEngenheiro()),
+    array('label' => Yii::t('app', 'Recibos'), 'url' => array('recibo/admin'), 'visible' => Yii::app()->user->isMaster() || Yii::app()->user->isEngenheiro()),
+    array('label' => Yii::t('app', 'Valores retidos'), 'url' => array('retencao/admin'), 'visible' => Yii::app()->user->isMaster()),
+    array('label' => Yii::t('app', 'Empreiteiros'), 'url' => array('usuario/empreiteiros'), 'visible' => Yii::app()->user->isMaster() || Yii::app()->user->isEngenheiro()),
 );
 
 Yii::app()->clientScript->registerScript('search', "

@@ -16708,3 +16708,28 @@ Stack trace:
 REQUEST_URI=/sistema/index.php?r=material/view&id=7
 in C:\xampp\htdocs\sistema\protected\controllers\MaterialController.php (7)
 in C:\xampp\htdocs\sistema\index.php (13)
+2014/11/14 02:35:46 [error] [exception.CException] exception 'CException' with message 'WebUser and its behaviors do not have a method or closure named "isAdm".' in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\sistema\protected\views\layouts\column2.php(9): CComponent->__call('isAdm', Array)
+#1 C:\xampp\htdocs\sistema\protected\views\layouts\column2.php(9): WebUser->isAdm()
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(784): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\sistema\protected\controllers\ApartamentoController.php(525): CController->render('rel', Array)
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ApartamentoController->actionRel()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('rel')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('apartamento/rel')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\sistema\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/sistema/index.php?r=apartamento/rel
+HTTP_REFERER=http://localhost/sistema/index.php?r=empreendimento/view
+---

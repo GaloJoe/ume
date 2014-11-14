@@ -50,7 +50,8 @@
                     ));
                     ?>
                 </div><!-- mainmenu -->
-            <?php } else {?>
+            <?php } else if((!($this->uniqueid == 'recibo' && ($this->action->Id == 'view' || $this->action->Id == 'generateRecibo'))) &&
+                    (!($this->uniqueid == 'retencao' && $this->action->Id == 'generateRecibo'))) {?>
                 <div id="mainmenu">
                     <?php
                     $this->widget('zii.widgets.CMenu', array(
