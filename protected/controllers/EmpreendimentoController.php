@@ -7,9 +7,9 @@ class EmpreendimentoController extends GxController {
             'accessControl',
         );
     }
-    
-    public function actionSelect($id=null) {
-        if($id != null && $id != 0) {
+
+    public function actionSelect($id = null) {
+        if ($id != null && $id != 0) {
             Yii::app()->session['empreendimento'] = $id;
             $this->redirect(Yii::app()->user->returnUrl);
         } else {
@@ -35,8 +35,28 @@ class EmpreendimentoController extends GxController {
 
     public function actionView() {
         $id = Yii::app()->session['empreendimento'];
+
+        $empreendimento = Empreendimento::model()->findByPk($id);
+
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'empreendimento = :empreendimento';
+        $criteria->params = array(':empreendimento' => $id);
+        $criteria->order = 'descricao ASC';
+        $blocos = Bloco::model()->findAll($criteria);
+
+        foreach ($blocos as $bloco) {
+            $criteria = new CDbCriteria;
+            $criteria->condition = 'bloco = :bloco';
+            $criteria->params = array(':bloco' => $bloco->id);
+            $criteria->order = 'descricao ASC';
+            $apartamentos = Apartamento::model()->findAll($criteria);
+            $bloco->apartamentos = $apartamentos;
+        }
+        
+        $empreendimento->blocos = $blocos;
+
         $this->render('view', array(
-            'model' => $this->loadModel($id, 'Empreendimento'),
+            'model' => $empreendimento,
         ));
     }
 
@@ -77,8 +97,9 @@ class EmpreendimentoController extends GxController {
             }
             if ($model->save()) {
                 if (Yii::app()->getRequest()->getIsAjaxRequest())
-                    Yii::app()->end(); else
-                $this->redirect(array('view', 'id' => $model->id));
+                    Yii::app()->end();
+                else
+                    $this->redirect(array('view', 'id' => $model->id));
             }
         }
 
@@ -90,34 +111,34 @@ class EmpreendimentoController extends GxController {
 
         if (isset($_POST['Empreendimento'])) {
             $model->setAttributes($_POST['Empreendimento']);
-            
+
             $images = CUploadedFile::getInstancesByName('images');
             $implantacaos = CUploadedFile::getInstancesByName('implantacaos');
             $implantacaofulls = CUploadedFile::getInstancesByName('implantacaofulls');
- 
+
             // proceed if the images have been set
             if (isset($images)) {
                 $logo_path = realpath(Yii::app()->basePath . '/../images/logo');
                 foreach ($images as $image => $pic) {
-                    $pic->saveAs($logo_path . '/' . $pic->name );
+                    $pic->saveAs($logo_path . '/' . $pic->name);
                     $model->logo = "images/logo/" . $pic->name;
                 }
             }
             if (isset($implantacaos)) {
                 $implantacao_path = realpath(Yii::app()->basePath . '/../images/implantacao');
                 foreach ($implantacaos as $implantacao => $pic) {
-                    $pic->saveAs($implantacao_path . '/' . $pic->name );
+                    $pic->saveAs($implantacao_path . '/' . $pic->name);
                     $model->implantacao = "images/implantacao/" . $pic->name;
                 }
             }
             if (isset($implantacaofulls)) {
                 $implantacaofull_path = realpath(Yii::app()->basePath . '/../images/implantacao');
                 foreach ($implantacaofulls as $implantacaofull => $pic) {
-                    $pic->saveAs($implantacaofull_path . '/' . $pic->name );
+                    $pic->saveAs($implantacaofull_path . '/' . $pic->name);
                     $model->implantacao_full = "images/implantacao/" . $pic->name;
                 }
             }
-            
+
             if ($model->save()) {
                 $this->redirect(array('view', 'id' => $model->id));
             }
