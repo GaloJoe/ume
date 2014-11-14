@@ -792,3 +792,47 @@ select {
     color:#A43E27;
     font-size: 11px;
 }
+
+.accordion, .accordion * {
+    -webkit-box-sizing:border-box; 
+    -moz-box-sizing:border-box; 
+    box-sizing:border-box;
+}
+ 
+.accordion {
+    overflow:hidden;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+    border-radius:3px;
+    background:#f7f7f7;
+}
+ 
+/*----- Section Titles -----*/
+.accordion-section-title {
+    width:100%;
+    padding:15px;
+    display:inline-block;
+    background:#B6AEAC;
+    transition:all linear 0.15s;
+    /* Type */
+    font-size:1.200em;
+    font-weight:bold;
+    color:#000;
+}
+ 
+.accordion-section-title.active, .accordion-section-title:hover {
+    background:#A69E8C;
+    /* Type */
+    font-size:1.200em;
+    font-weight:bold;
+    color:#000;
+}
+ 
+.accordion-section:last-child .accordion-section-title {
+    border-bottom:none;
+}
+ 
+/*----- Section Content -----*/
+.accordion-section-content {
+    padding:15px;
+    display:none;
+}

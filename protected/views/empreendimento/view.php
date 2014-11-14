@@ -46,38 +46,39 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
 
 <?php
 //if (Yii::app()->user->isMaster() || Yii::app()->user->isAdmin()) {
-//    ?>
+//    
+?>
 <!--    <br/><br/>
     <div class="newRelated">
-        <?php // echo GxHtml::link(Yii::t('app', 'New Block'), array('bloco/create', 'empreendimento' => $model->id), array('class' => 'linkButton')); ?>
+<?php // echo GxHtml::link(Yii::t('app', 'New Block'), array('bloco/create', 'empreendimento' => $model->id), array('class' => 'linkButton'));  ?>
     </div>
     <br/>-->
-    <?php
+<?php
 //}
 ?>
 
-<div class="related">
+<div class="accordion">
 
-    <h2>
-        <?php
-        if ($model->blocos != null) {
-            echo GxHtml::encode($model->getRelationLabel('blocos'));
-        }
-        ?>
-    </h2>
     <?php
-    echo GxHtml::openTag('ul');
+    $count = 0;
     foreach ($model->blocos as $relatedModel) {
-        if((Yii::app()->user->isMaster() || Yii::app()->user->isAdmin()) || $relatedModel->disponivel) {
-            echo GxHtml::openTag('li');
-            echo GxHtml::link(GxHtml::encode(GxHtml::valueEx($relatedModel)), array('bloco/view', 'id' => GxActiveRecord::extractPkValue($relatedModel, true)));
-            echo GxHtml::openTag('ul');
+        if ((Yii::app()->user->isMaster() || Yii::app()->user->isAdmin()) || $relatedModel->disponivel) {
+            $count = $count + 1;
+            echo GxHtml::openTag('div', array('class' => 'accordion-section'));
+           
+            
+            echo GxHtml::openTag('a', array('class' => 'accordion-section-title', 'href' => '#accordion-' . $count)); 
+            echo GxHtml::encode(GxHtml::valueEx($relatedModel));
+            echo GxHtml::link('Detalhe', array('bloco/view', 'id' => GxActiveRecord::extractPkValue($relatedModel, true)));
+            echo GxHtml::closeTag('a');
             foreach ($relatedModel->apartamentos as $ap) {
-                if((Yii::app()->user->isMaster() || Yii::app()->user->isAdmin()) || (!$ap->isSold() && !$ap->isEmContratacao() && $ap->disponivel)) {
+                if ((Yii::app()->user->isMaster() || Yii::app()->user->isAdmin()) || (!$ap->isSold() && !$ap->isEmContratacao() && $ap->disponivel)) {
                     $status = $ap->getStatus();
                     $status = str_replace(" ", "&nbsp;", $status);
                     $desc = $ap->descricao;
-
+                    
+                    echo GxHtml::openTag('div', array('id' => 'accordion-' . $count, 'class' => 'accordion-section-content'));
+                    
                     echo "<table cellpadding='0' cellspacing='0' class='marginBottom0'>";
                     echo "<tr>";
                     echo "<td style='margin-left: 50px;' width='100%'>";
@@ -88,13 +89,44 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                     echo "</td>";
                     echo "</tr>";
                     echo "</table>";
-                }
+                    ?>
+                </div>
+                <?php
             }
-            echo GxHtml::closeTag('ul');
-            echo GxHtml::closeTag('li');
         }
+        ?>
+        </div>
+        <?php
     }
-    echo GxHtml::closeTag('ul');
-    ?>
+}
+?>
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script>
+    $(document).ready(function() {
+        function close_accordion_section() {
+            $('.accordion .accordion-section-title').removeClass('active');
+            $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
+        }
 
+        $('.accordion-section-title').click(function(e) {
+            // Grab current anchor value
+            var currentAttrValue = $(this).attr('href');
+
+            if ($(e.target).is('.active')) {
+                close_accordion_section();
+            } else {
+                close_accordion_section();
+
+                // Add active class to section title
+                $(this).addClass('active');
+                // Open up the hidden content panel
+                $('.accordion ' + currentAttrValue).slideDown(300).addClass('open');
+            }
+
+            e.preventDefault();
+        });
+    });
+</script>
 </div>
