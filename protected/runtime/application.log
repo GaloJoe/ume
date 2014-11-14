@@ -16664,3 +16664,47 @@ Stack trace:
 REQUEST_URI=/sistema/index.php?r=apartamento/rel
 in C:\xampp\htdocs\sistema\protected\controllers\ApartamentoController.php (524)
 in C:\xampp\htdocs\sistema\index.php (13)
+2014/11/14 01:58:05 [error] [exception.CException] exception 'CException' with message 'MaterialController and its behaviors do not have a method or closure named "getTableAlias".' in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1518): CComponent->__call('getTableAlias', Array)
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1518): MaterialController->getTableAlias(true)
+#2 C:\xampp\htdocs\sistema\protected\controllers\MaterialController.php(7): CActiveRecord->findByAttributes(NULL, NULL, 'material = 7')
+#3 [internal function]: MaterialController->actionView('7')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(MaterialController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MaterialController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('material/view')
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\sistema\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/sistema/index.php?r=material/view&id=7
+HTTP_REFERER=http://localhost/sistema/index.php?r=categoria/view&id=2
+---
+2014/11/14 01:58:29 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\yii\framework\db\schema\CDbCommandBuilder.php:670)
+Stack trace:
+#0 unknown(0): MaterialController->actionView()
+#1 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): MaterialController->runAction()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): MaterialController->filterAccessControl()
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(265): MaterialController->runActionWithFilters()
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): MaterialController->run()
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\sistema\index.php(13): CWebApplication->run()
+REQUEST_URI=/sistema/index.php?r=material/view&id=7
+in C:\xampp\htdocs\sistema\protected\controllers\MaterialController.php (7)
+in C:\xampp\htdocs\sistema\index.php (13)

@@ -3,7 +3,15 @@
 class MaterialController extends GxController {
 
     public function actionView($id) {
-        $material = $this->loadModel($id, 'Material');
+        $material = Material::model()->findByPk($id);
+
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'material = :material';
+        $criteria->params = array(':material' => $id);
+        $criteria->order = 'data DESC';
+        $movimentacoes = Movimentacao::model()->findAll($criteria);
+        $material->movimentacoes = $movimentacoes;
+        
         $chartData = $material->getChartData();
 
         $this->render('view', array(
@@ -49,7 +57,7 @@ class MaterialController extends GxController {
     public function actionDelete($id) {
         $model = $this->loadModel($id, 'Material');
         $model->ativo = 0;
-        
+
         if ($model->update(array('ativo'))) {
             $this->redirect(array('material/view', 'id' => $id));
         }
