@@ -32,6 +32,10 @@ class UsuarioController extends GxController {
 
         if (isset($_POST['Usuario'])) {
             $model->setAttributes($_POST['Usuario']);
+            
+            if(Yii::app()->user->isEngenheiro()) {
+                $model->perfil = 'empreiteiro';
+            }
 
             if (trim($model->senha) != '') {
                 $model->ativo = true;
@@ -138,6 +142,10 @@ class UsuarioController extends GxController {
 
         if (isset($_GET['Usuario']))
             $model->setAttributes($_GET['Usuario']);
+        
+        if(Yii::app()->user->isEngenheiro()) {
+            $model->perfil = 'empreiteiro';
+        }
 
         $this->render('admin', array(
             'model' => $model,

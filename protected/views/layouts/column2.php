@@ -10,7 +10,7 @@ if ((1 == 1 || $this->uniqueid == 'usuario' || $this->uniqueid == 'imobiliaria')
                    ($this->action->Id == 'rel' || $this->action->Id == 'listAvailable' || $this->action->Id == 'listSold' || 
                         $this->action->Id == 'listExchanged' || $this->action->Id == 'listHiring' || $this->action->Id == 'listReserved' || 
                         $this->uniqueid == 'categoria' || $this->uniqueid == 'material' || $this->uniqueid == 'movimentacao') ) ||
-        ((Yii::app()->user->isMaster() || Yii::app()->user->isEngenheiro()) && $this->uniqueid == 'atividade')
+        ((Yii::app()->user->isMaster() || Yii::app()->user->isEngenheiro()) && ($this->uniqueid == 'atividade' || ($this->uniqueid == 'usuario' && $this->action->Id == 'admin')))
 ) {
     ?>
 

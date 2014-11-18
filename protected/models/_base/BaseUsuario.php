@@ -13,7 +13,7 @@
  * @property string $nome
  * @property string $email
  * @property string $senha
- * @property integer $perfil
+ * @property string $perfil
  * @property integer $corretor_chefe
  * @property integer $imobiliaria
  *
