@@ -803,28 +803,83 @@ select {
     overflow:hidden;
     box-shadow:0px 1px 3px rgba(0,0,0,0.25);
     border-radius:3px;
-    background:#f7f7f7;
+    margin-top: 10px;
 }
- 
+
+.accordion-detail {
+    float: right;
+    padding:14px;
+}
+
+.accordion-inside {
+    float: left;
+    width: 90%;
+    font-size: 14px;
+}
+
+.accordion-inside a {
+    color: #000;
+    display: block;
+    text-decoration: none;
+    transition: font-size 0.3s ease 0s, background-color 0.3s ease 0s;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.accordion-inside a:hover {
+    background-color: #f6f6f6;
+    color: #000;
+    display: block;
+    text-decoration: none;
+    transition: font-size 0.3s ease 0s, background-color 0.3s ease 0s;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.accordion-inside-detail {
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.accordion-section {
+    border-bottom: 1px solid #a43e27;
+    border-bottom-left-radius: 5px;
+    border-left: 1px solid #a43e27;
+    border-right: 1px solid #a43e27;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #a43e27;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-bottom: 5px;
+}
+
 /*----- Section Titles -----*/
 .accordion-section-title {
-    width:100%;
+    width:95%;
     padding:15px;
     display:inline-block;
-    background:#B6AEAC;
     transition:all linear 0.15s;
     /* Type */
     font-size:1.200em;
     font-weight:bold;
     color:#000;
 }
+
+.accordion-section-title.active {
+    font-size:1.200em;
+    font-weight:bold;
+    color:#000;
+    text-decoration: none;
+}
  
-.accordion-section-title.active, .accordion-section-title:hover {
-    background:#A69E8C;
+.accordion-section-title:hover {
     /* Type */
     font-size:1.200em;
     font-weight:bold;
     color:#000;
+    text-decoration: none;
+    padding: 20px;
 }
  
 .accordion-section:last-child .accordion-section-title {
@@ -833,6 +888,6 @@ select {
  
 /*----- Section Content -----*/
 .accordion-section-content {
-    padding:15px;
+    padding:20px;
     display:none;
 }

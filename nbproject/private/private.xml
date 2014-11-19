@@ -39,11 +39,14 @@
         </group>
         <group name="Dall V3">
             <file>file:/C:/xampp/htdocs/sistema/protected/views/layouts/column2.php</file>
-            <file>file:/C:/xampp/htdocs/sistema/protected/controllers/HistoricoAtividadeController.php</file>
+            <file>file:/C:/xampp/htdocs/sistema/protected/controllers/UsuarioController.php</file>
             <file>file:/C:/xampp/htdocs/sistema/protected/views/layouts/main.php</file>
             <file>file:/C:/xampp/htdocs/sistema/protected/config/main.php</file>
-            <file>file:/C:/xampp/htdocs/sistema/protected/controllers/ApartamentoController.php</file>
-            <file>file:/C:/xampp/htdocs/sistema/protected/views/atividade/admin.php</file>
+            <file>file:/C:/xampp/htdocs/sistema/protected/views/usuario/admin.php</file>
+            <file>file:/C:/xampp/htdocs/sistema/protected/views/usuario/_form.php</file>
+            <file>file:/C:/xampp/htdocs/sistema/protected/models/_base/BaseUsuario.php</file>
+            <file>file:/C:/xampp/htdocs/sistema/protected/views/usuario/create.php</file>
+            <file>file:/C:/xampp/htdocs/sistema/protected/models/Usuario.php</file>
         </group>
     </open-files>
 </project-private>

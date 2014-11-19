@@ -16733,3 +16733,30 @@ Stack trace:
 REQUEST_URI=/sistema/index.php?r=apartamento/rel
 HTTP_REFERER=http://localhost/sistema/index.php?r=empreendimento/view
 ---
+2014/11/19 22:17:42 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:103)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(158): renderAttributes()
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(412): tag()
+#2 C:\xampp\htdocs\sistema\protected\views\empreendimento\view.php(74): link()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): EmpreendimentoController->renderInternal()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): EmpreendimentoController->renderFile()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): EmpreendimentoController->renderPartial()
+#7 C:\xampp\htdocs\sistema\protected\controllers\EmpreendimentoController.php(60): EmpreendimentoController->render()
+#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): EmpreendimentoController->actionView()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): EmpreendimentoController->runAction()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): EmpreendimentoController->filterAccessControl()
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): EmpreendimentoController->runActionWithFilters()
+#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): EmpreendimentoController->run()
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\sistema\index.php(13): CWebApplication->run()
+REQUEST_URI=/sistema/index.php?r=empreendimento/view
+in C:\xampp\htdocs\sistema\protected\views\empreendimento\view.php (74)
+in C:\xampp\htdocs\sistema\protected\controllers\EmpreendimentoController.php (60)
+in C:\xampp\htdocs\sistema\index.php (13)

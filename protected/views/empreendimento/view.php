@@ -65,32 +65,35 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
         if ((Yii::app()->user->isMaster() || Yii::app()->user->isAdmin()) || $relatedModel->disponivel) {
             $count = $count + 1;
             echo GxHtml::openTag('div', array('class' => 'accordion-section'));
-           
-            
-            echo GxHtml::openTag('a', array('class' => 'accordion-section-title', 'href' => '#accordion-' . $count)); 
+
+
+            echo GxHtml::openTag('a', array('class' => 'accordion-section-title', 'href' => '#accordion-' . $count));
             echo GxHtml::encode(GxHtml::valueEx($relatedModel));
-            echo GxHtml::link('Detalhe', array('bloco/view', 'id' => GxActiveRecord::extractPkValue($relatedModel, true)));
+            
+            $imgButton = CHtml::image(Yii::app()->baseUrl . '/css/' . 'view.png');
+            echo CHtml::link($imgButton, array('bloco/view', 'id' => GxActiveRecord::extractPkValue($relatedModel, true)), array('class' => 'accordion-detail'));
+            
             echo GxHtml::closeTag('a');
+
             foreach ($relatedModel->apartamentos as $ap) {
                 if ((Yii::app()->user->isMaster() || Yii::app()->user->isAdmin()) || (!$ap->isSold() && !$ap->isEmContratacao() && $ap->disponivel)) {
                     $status = $ap->getStatus();
                     $status = str_replace(" ", "&nbsp;", $status);
                     $desc = $ap->descricao;
-                    
+
                     echo GxHtml::openTag('div', array('id' => 'accordion-' . $count, 'class' => 'accordion-section-content'));
-                    
-                    echo "<table cellpadding='0' cellspacing='0' class='marginBottom0'>";
-                    echo "<tr>";
-                    echo "<td style='margin-left: 50px;' width='100%'>";
+
+                    echo GxHtml::openTag('div', array('class' => 'accordion-inside'));
                     echo GxHtml::link(GxHtml::encode($desc), array('apartamento/view', 'id' => GxActiveRecord::extractPkValue($ap, true)));
-                    echo "</td>";
-                    echo "<td>";
+                    echo GxHtml::closeTag('div');
+                    
+                    echo GxHtml::openTag('div', array('id' => 'accordion-' . $count, 'class' => 'accordion-inside-detail'));
                     echo $status;
-                    echo "</td>";
-                    echo "</tr>";
-                    echo "</table>";
+                    echo GxHtml::closeTag('div');
+                    
+                    echo GxHtml::closeTag('div');
+                    
                     ?>
-                </div>
                 <?php
             }
         }
@@ -104,13 +107,13 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         function close_accordion_section() {
             $('.accordion .accordion-section-title').removeClass('active');
             $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
         }
 
-        $('.accordion-section-title').click(function(e) {
+        $('.accordion-section-title').click(function (e) {
             // Grab current anchor value
             var currentAttrValue = $(this).attr('href');
 
