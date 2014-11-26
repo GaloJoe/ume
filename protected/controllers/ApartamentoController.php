@@ -152,8 +152,7 @@ class ApartamentoController extends GxController {
             else
                 $model->usuario = Yii::app()->user->id;
 
-            $countReserves = $this->getCountReserves($model);
-            {
+            $countReserves = $this->getCountReserves($model); {
                 $logedUser = Usuario::model()->findByPk(Yii::app()->user->id);
                 $imobiliaria = $logedUser->imobiliaria0;
             }
@@ -588,13 +587,25 @@ class ApartamentoController extends GxController {
 
         if (isset($_POST['Historico'])) {
             $model->setAttributes($_POST['Historico']);
-            
+
             $model->data_aprovacao_financiamento = Yii::app()->dateFormatter->format("yyyy-MM-dd", strtotime($model->data_aprovacao_financiamento));
-            
-            if ($model->save()) {
-//                $mailHelper = new MailHelper();
-//                $mailHelper->sendValorComissaoCorretorMail($model, $novoValorPago);
-                $this->redirect(array('view', 'id' => $ap));
+
+            $model->valor_financiado_construtora = str_replace('R$', '', $model->valor_financiado_construtora);
+            $model->valor_financiado_construtora = str_replace('.', '', $model->valor_financiado_construtora);
+            $model->valor_financiado_construtora = str_replace(',', '.', $model->valor_financiado_construtora);
+            $model->valor_financiado_caixa = str_replace('R$', '', $model->valor_financiado_caixa);
+            $model->valor_financiado_caixa = str_replace('.', '', $model->valor_financiado_caixa);
+            $model->valor_financiado_caixa = str_replace(',', '.', $model->valor_financiado_caixa);
+
+            $totalValores = (float) ($model->valor_entrada + $model->valor_financiado_construtora + $model->valor_financiado_caixa);
+
+            if ($totalValores == $model->valor_venda) {
+                if ($model->save()) {
+                    $this->redirect(array('view', 'id' => $ap));
+                }
+            } else {
+                $model = Historico::model()->findByPk($res);
+                $this->render('aprovarFinanciamento', array('model' => $model, 'erroUsuario' => '', 'erro' => 'Os valores (entrada, financiado pela construtora e pela caixa) somados devem ser o valor do apartamento.'));
             }
         } else {
             $this->render('aprovarFinanciamento', array('model' => $model, 'erroUsuario' => '', 'erro' => ''));

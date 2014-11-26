@@ -1,6 +1,17 @@
 <div class="form">
 
     <?php
+    $this->widget('application.extensions.moneymask.MMask', array(
+        'element' => '#valor_financiado_construtora,#valor_financiado_caixa',
+        'config' => array(
+            'symbol' => 'R$',
+            'showSymbol' => true,
+            'symbolStay' => true,
+            'decimal' => ',',
+            'thousands' => '.'
+        )
+    ));
+    
     //--------------------------------------------------------------
     $this->widget('zii.widgets.CDetailView', array(
         'data' => $model->apartamento0,
@@ -52,6 +63,18 @@
                 ),
             ));
             ?>
+        </div><!-- row -->
+        
+         <div class="row">
+            <?php echo $form->labelEx($model, 'valor_financiado_construtora'); ?>
+            <?php echo $form->textField($model, 'valor_financiado_construtora', array('id' => 'valor_financiado_construtora')); ?>
+            <?php echo $form->error($model, 'valor_financiado_construtora'); ?>
+        </div><!-- row -->
+
+        <div class="row">
+            <?php echo $form->labelEx($model, 'valor_financiado_caixa'); ?>
+            <?php echo $form->textField($model, 'valor_financiado_caixa', array('id' => 'valor_financiado_caixa')); ?>
+            <?php echo $form->error($model, 'valor_financiado_caixa'); ?>
         </div><!-- row -->
 
         <?php
